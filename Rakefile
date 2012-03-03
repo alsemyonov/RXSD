@@ -34,6 +34,7 @@ SPEC = Gem::Specification.new do |s|
     s.required_rubygems_version = Gem::Requirement.new(">= 1.3.3")
 
     s.add_dependency('libxml-ruby', '~> 2.2.0')
+    s.add_dependency('active_support', '~> 3.0')
     s.add_development_dependency('rspec', '~> 2.8.0')
 
     s.author = "Mo Morsi"

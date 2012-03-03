@@ -8,6 +8,7 @@ lib = File.dirname(__FILE__)
 $: << lib + '/rxsd/'
 
 require 'rubygems'
+require 'active_support/core_ext/string/inflections'
 
 require lib + '/rxsd/exceptions'
 require lib + '/rxsd/common'
