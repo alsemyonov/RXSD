@@ -3,17 +3,17 @@
 # Copyright (C) 2010 Mohammed Morsi <movitto@yahoo.com>
 # Licensed under the LGPLv3+ http://www.gnu.org/licenses/lgpl.txt
 
-require 'rake/rdoctask'
-require 'spec/rake/spectask'
-require 'rake/gempackagetask'
+require 'rdoc/task'
+require 'rspec/core/rake_task'
+require 'rubygems/package_task'
 
 
 GEM_NAME="rxsd"
 PKG_VERSION='0.5.1'
 
 desc "Run all specs"
-Spec::Rake::SpecTask.new('spec') do |t|
-  t.spec_files = FileList['spec/**/*_spec.rb']
+RSpec::Core::RakeTask.new('spec') do |t|
+  t.pattern = 'spec/**/*_spec.rb'
 end
 
 Rake::RDocTask.new do |rd|
@@ -33,8 +33,8 @@ SPEC = Gem::Specification.new do |s|
     s.required_ruby_version = '>= 1.8.1'
     s.required_rubygems_version = Gem::Requirement.new(">= 1.3.3")
 
-    s.add_dependency('libxml-ruby', '~> 1.1.4')
-    s.add_development_dependency('rspec', '~> 1.3.0')
+    s.add_dependency('libxml-ruby', '~> 2.2.0')
+    s.add_development_dependency('rspec', '~> 2.8.0')
 
     s.author = "Mo Morsi"
     s.email = "mo@morsi.org"
@@ -44,7 +44,7 @@ SPEC = Gem::Specification.new do |s|
     s.homepage = %q{http://morsi.org/projects/RXSD}
 end
 
-Rake::GemPackageTask.new(SPEC) do |pkg|
+Gem::PackageTask.new(SPEC) do |pkg|
     pkg.need_tar = true
     pkg.need_zip = true
 end
