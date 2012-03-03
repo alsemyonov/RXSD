@@ -6,9 +6,9 @@
 # See COPYING for the License of this software
 
 # include whatever output builders you want here,
-require 'builders/ruby_class'
-require 'builders/ruby_definition'
-require 'builders/ruby_object'
+require 'rxsd/builders/ruby_class'
+require 'rxsd/builders/ruby_definition'
+require 'rxsd/builders/ruby_object'
 
 module RXSD
 

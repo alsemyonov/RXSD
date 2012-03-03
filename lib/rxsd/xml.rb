@@ -6,26 +6,26 @@
 require 'rubygems'
 
 # require libxml adapter
-require 'libxml_adapter'
+require 'rxsd/libxml_adapter'
 
 module RXSD
 module XML
 
 # RXSD XML node interface that subclasses must conform to and implement methods
 class Node
- 
+
   # Should return name of node, eg <foo> => "foo"
   virtual :name
 
   # Return hash of attribute name / values
   virtual :attrs
-  
+
   # Should return bool if node has a parent
   virtual :parent?
 
   # Should return this nodes's parent, if any
   virtual :parent
-  
+
   # Should return children nodes
   virtual :children
 
@@ -47,7 +47,7 @@ class Node
   def self.factory(args = {})
     backend = args[:backend]
     xml     = args[:xml]
-  
+
     # add additional backend drivers here if desired
     return LibXMLNode.xml_root(xml) if backend == :libxml
     return nil
@@ -64,7 +64,7 @@ class Node
   # Instantiate all children of provided class type
   def children_objs(klass)
      elements = []
-     children.find_all { |c| c.name == klass.tag_name }.each { |c| 
+     children.find_all { |c| c.name == klass.tag_name }.each { |c|
         elements << klass.from_xml(c)
      }
      return elements
